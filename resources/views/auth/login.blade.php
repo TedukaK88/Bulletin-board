@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_guest')
 
 @section('content')
 <div class="container">
@@ -51,7 +51,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="d-flex form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
@@ -63,6 +63,12 @@
                                     </a>
                                 @endif
                             </div>
+                            <div class="p-10 bg-blue"></div>
+                            <div class="col-md-8 offset-md-4">
+                                <a class="btn btn-link" href="{{ route('register') }}">
+                                {{ __('Register') }}
+                                </a>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -70,4 +76,13 @@
         </div>
     </div>
 </div>
+
+<div class="d-flex align-items-center">
+    <div class="w-25 px-5 mx-auto mt-5 border border-primary">
+        <a href="/top">
+            <p class="my-2 text-center">ログインせず top page へ</p>
+        </a>
+    </div>
+</div>
+
 @endsection

@@ -12,10 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/login','LoginController@login')->name('login');
+Route::get('/login','Auth\Login\LoginController@loginView')->name('login');
+Route::get('/register','Auth\Register\RegisterController@loginView')->name('register');
+
+Route::get('/top','User\Post\PostsController@topView')->name('top');
+Route::get('/category','User\Post\PostsController@categoryView')->name('category');
+Route::get('/post','User\Post\PostsController@postView')->name('post');
+Route::get('/post_detail','User\Post\PostsController@post_detailView')->name('post_detail');
+Route::get('/post_edit','User\Post\PostsController@post_editView')->name('post_edit');
+Route::get('/comment_edit','User\Post\PostsController@comment_editView')->name('comment_edit');

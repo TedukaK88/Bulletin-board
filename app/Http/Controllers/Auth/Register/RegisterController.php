@@ -8,4 +8,8 @@ use Illuminate\Http\Request;
 class RegisterController extends Controller
 {
     //
+    public function loginView()
+    {
+        return view('auth.register');
+    }
 }
