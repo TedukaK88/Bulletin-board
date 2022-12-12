@@ -18,7 +18,9 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/login','Auth\Login\LoginController@loginView')->name('login');
 Route::get('/register','Auth\Register\RegisterController@loginView')->name('register');
+Route::post('/register/add','Auth\Register\RegisterAddedController@addRegister')->name('addRegister');
 
+Route::post('/top','User\Post\PostsController@topView')->name('p_top');
 Route::get('/top','User\Post\PostsController@topView')->name('top');
 Route::get('/category','User\Post\PostsController@categoryView')->name('category');
 Route::get('/post','User\Post\PostsController@postView')->name('post');
