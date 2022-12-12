@@ -16,16 +16,30 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/login','Auth\Login\LoginController@loginView')->name('login');
-Route::get('/register','Auth\Register\RegisterController@loginView')->name('register');
-Route::post('/register/add','Auth\Register\RegisterAddedController@addRegister')->name('addRegister');
-Route::get('/logout','Auth\Login\LoginController@logout')->name('logout');
-Route::post('/logout','Auth\Login\LoginController@logout')->name('logout');
 
-Route::post('/top','Auth\Login\LoginController@login')->name('login_top');
-Route::get('/top','User\Post\PostsController@topView')->name('top');
-Route::get('/category','User\Post\PostsController@categoryView')->name('category');
-Route::get('/post','User\Post\PostsController@postView')->name('post');
-Route::get('/post_detail','User\Post\PostsController@post_detailView')->name('post_detail');
-Route::get('/post_edit','User\Post\PostsController@post_editView')->name('post_edit');
-Route::get('/comment_edit','User\Post\PostsController@comment_editView')->name('comment_edit');
+Route::group(['middleware' => ['guest']], function(){
+    Route::namespace('Auth')->group(function(){
+        Route::get('/login','Login\LoginController@loginView')->name('login');
+        Route::get('/register','Register\RegisterController@loginView')->name('register');
+        Route::post('/register/add','Register\RegisterAddedController@addRegister')->name('addRegister');
+    });
+});
+
+Route::post('/login/auth','Auth\Login\LoginController@login')->name('login_auth');
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::namespace('Auth')->group(function(){
+        Route::get('/logout','Login\LoginController@logout')->name('logout');
+        Route::post('/logout','Login\LoginController@logout')->name('logout');
+    });
+    Route::namespace('User\Post')->group(function(){
+        Route::get('/top','PostsController@topView')->name('top');
+        Route::get('/category','PostsController@categoryView')->name('category');
+        Route::get('/post','PostsController@postView')->name('post');
+        Route::get('/post_detail','PostsController@post_detailView')->name('post_detail');
+        Route::get('/post_edit','PostsController@post_editView')->name('post_edit');
+        Route::get('/comment_edit','PostsController@comment_editView')->name('comment_edit');
+    });
+});
+
+
