@@ -32,6 +32,10 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/logout','Login\LoginController@logout')->name('logout');
         Route::post('/logout','Login\LoginController@logout')->name('logout');
     });
+    Route::namespace('Admin')->group(function(){
+        Route::post('/category/mainCategoryCreate','Post\PostMainCategoriesController@mainCategoryCreate')->name('mainCategoryCreate');
+        Route::post('/category/subCategoryCreate','Post\PostSubCategoriesController@subCategoryCreate')->name('subCategoryCreate');
+    });
     Route::namespace('User\Post')->group(function(){
         Route::get('/top','PostsController@topView')->name('top');
         Route::get('/category','PostsController@categoryView')->name('category');

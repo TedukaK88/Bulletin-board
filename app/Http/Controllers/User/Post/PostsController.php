@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User\Post;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
 
 class PostsController extends Controller
 {
@@ -16,7 +17,10 @@ class PostsController extends Controller
 
     public function categoryView()
     {
-        return view('main.category');
+        //---  削除されていない mainCategories , subcategories のみ取得
+        $mainCategories = \DB::table('post_main_categories')->where('deleted_at','=',null)->get();
+        $subCategories = \DB::table('post_sub_categories')->where('deleted_at','=',null)->get();
+        return view('main.category',compact('mainCategories','subCategories'));
     }
 
     public function postView()

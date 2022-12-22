@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="error-message">
+    <div class="error-message" style="margin-left: 30px; margin-bottom: 2rem;">
     @foreach ($errors->all() as $error)
         <li>{{$error}}</li>
     @endforeach

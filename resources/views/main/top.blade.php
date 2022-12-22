@@ -19,5 +19,10 @@
     </a>
 </div>
 
+<div class="error-message" style="margin-left: 30px; margin-bottom: 2rem;">
+    @foreach ($errors->all() as $error)
+        <li>{{$error}}</li>
+    @endforeach
+</div>
 <!-- =========================  content  =========================== -->
 @endsection
