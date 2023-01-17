@@ -35,6 +35,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::namespace('Admin')->group(function(){
         Route::post('/category/mainCategoryCreate','Post\PostMainCategoriesController@mainCategoryCreate')->name('mainCategoryCreate');
         Route::post('/category/subCategoryCreate','Post\PostSubCategoriesController@subCategoryCreate')->name('subCategoryCreate');
+        Route::post('/category/mainCategoryDelete','Post\PostMainCategoriesController@mainCategoryDelete')->name('mainCategoryDelete');
+        Route::post('/category/subCategoryDelete','Post\PostSubCategoriesController@subCategoryDelete')->name('subCategoryDelete');
     });
     Route::namespace('User\Post')->group(function(){
         Route::get('/top','PostsController@topView')->name('top');

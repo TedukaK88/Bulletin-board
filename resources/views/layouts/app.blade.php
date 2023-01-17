@@ -26,7 +26,7 @@
         <!-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm"> -->
         <nav class="navbar navbar-expand-md navbar-light bg-white">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" style="font-size:1.75rem; margin-top:15px;" href="{{ url('/') }}">
                     <!-- {{ config('app.name', 'Laravel') }} -->
                     Page Name(仮)   <!-- ページ毎に変数受け渡し予定 -->
                 </a>
@@ -54,7 +54,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('logout') }}">{{ __('logout') }}</a>
+                                <button style="background-color:#5080ff; border:none; width:175px; margin-top:30px"><a class="nav-link" style="color:white;" href="{{ route('logout') }}">ログアウト</a></button>
                             </li>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf

@@ -35,4 +35,13 @@ class PostMainCategoriesController extends Controller
             }
             //-------------------------------------------------------
     }
+
+    public function mainCategoryDelete(Request $request){
+        // DD($request,$request->main_category_id);
+        \DB::table('post_main_categories')
+            ->where('id',$request->main_category_id)
+            ->update(['deleted_at' => date("Y-m-d H:i:s")]);
+
+        return redirect('/category');
+    }
 }

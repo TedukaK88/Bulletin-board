@@ -37,4 +37,13 @@ class PostSubCategoriesController extends Controller
             }
             //-------------------------------------------------------
     }
+
+    public function subCategoryDelete(Request $request){
+        // DD($request,$request->sub_category_id,date("Y-m-d H:i:s"));
+        \DB::table('post_sub_categories')
+            ->where('id',$request->sub_category_id)
+            ->update(['deleted_at' => date("Y-m-d H:i:s")]);
+
+        return redirect('/category');
+    }
 }
