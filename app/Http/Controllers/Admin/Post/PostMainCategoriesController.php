@@ -4,25 +4,26 @@ namespace App\Http\Controllers\Admin\Post;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Requests\CategoryFromRequest;
 use Illuminate\Support\Facades\Validator;
 use DB;
 
 class PostMainCategoriesController extends Controller
 {
     //
-    public function mainCategoryCreate(Request $request){
+    public function mainCategoryCreate(CategoryFormRequest $request){
         // DD($request,$request->mainCategoryName);
             //------------ validation  -----------------------------
-            $rules = [
-                'mainCategoryName' => 'required|string|min:2|max:100|unique:post_main_categories,main_category'
-            ];
-            $validator = validator::make($request->all(),$rules);
-            if($validator->fails()){
-                // DD($request,$request->mainCategoryName);
-                return redirect('/category')
-                ->withErrors($validator)
-                ->withInput();
-            }else{
+            // $rules = [
+            //     'mainCategoryName' => 'required|string|min:2|max:100|unique:post_main_categories,main_category'
+            // ];
+            // $validator = validator::make($request->all(),$rules);
+            // if($validator->fails()){
+            //     // DD($request,$request->mainCategoryName);
+            //     return redirect('/category')
+            //     ->withErrors($validator)
+            //     ->withInput();
+            // }else{
             //-------------------------------------------------------
 
             //----------  add record  -------------------------------
@@ -32,7 +33,7 @@ class PostMainCategoriesController extends Controller
             ]);
 
             return redirect('/category');
-            }
+            // }
             //-------------------------------------------------------
     }
 

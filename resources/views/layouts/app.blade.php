@@ -26,7 +26,7 @@
         <!-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm"> -->
         <nav class="navbar navbar-expand-md navbar-light bg-white">
             <div class="container">
-                <a class="navbar-brand" style="font-size:1.75rem; margin-top:15px;" href="{{ url('/') }}">
+                <a class="navbar-brand" style="font-size:1.75rem; margin-top:15px;" href="{{ url('/top') }}">
                     <!-- {{ config('app.name', 'Laravel') }} -->
                     Page Name(仮)   <!-- ページ毎に変数受け渡し予定 -->
                 </a>
